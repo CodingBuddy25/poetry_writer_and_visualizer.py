@@ -7,6 +7,8 @@ Make a .env file with your own OpenAI key. This will be used to create agents an
 The format is:
 ```OPENAI_API_KEY = sk-proj-...```. You can get it from this page https://platform.openai.com/api-keys. 
 
+To run the code, run the python_writer_and_visualizer.py file. 
+
 ### Installing packages
 Install CrewAI by using ```pip install crewai```.
 Also make sure to install the other packages mentioned on top of the Crew.py
