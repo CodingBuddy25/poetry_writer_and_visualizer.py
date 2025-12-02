@@ -1,0 +1,6 @@
+Requirements for an English (/Shakespearean) sonnet:
+The sonnets must be 14 lines
+The sonnets should follow a Shakespearian rhyme scheme (ABAB CDCD EFEF GG), three quatrains (four-line stanzas) plus a final rhyming couplet (two-line stanza). 
+The sonnets should follow an iambic pentameter (a 10-syllable pattern of stressed and unstressed syllables)
+The last two lines of the sonnet (the ones in the GG rhyme) should have a Volta (A twist where the subject of the poem suddenly change, often to indicate a response to a question, a solution to a problem, or the resolving of some sort of tension established at the beginning of the poem)
+

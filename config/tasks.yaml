@@ -1,0 +1,56 @@
+story_agent_task:
+  description: >
+    Write a compelling and imaginative life story as if going trough a singular year, matching themes and emotions to the seasons
+  expected_output: >
+     A life story depicted through the changing seasons, with each season reflecting different themes and emotions based on the events in the protagonist's life. Save the persona in the "persona.md" file using the FileWriterTool you have available.
+  output_file: "persona.md"
+  agent: story_agent
+
+poet_agent_task:
+  description: |
+    Transform the life story provided by the story_agent into a series of sonnets that capture the essence of each season and the emotions tied to them. 3 sonnets per season, one for each month.  
+    Open and read the inspiring_set_final using the FileReadTool which you have available, use this as inspiration for your poetry. 
+    The inspiring set is a dictionary with has 100 sonnets.  
+    'sonnet_name': is the sonnet name, 
+    'purpose':  explains the purpose. This can be for either the 'theme' because it links to the four seasons or 'structure' because it gives an example structure.
+    'theme': gives common themes in the sonnets.
+    'sonnet_text': is the full sonnet text. Make sure that you check where lines end.
+
+  expected_output: >
+     A collection of 12 sonnets, with 3 sonnets for each season (spring, summer, autumn, winter), each sonnet reflecting the themes and emotions associated with that month in the life story.
+
+  context:
+    [story_agent_task]
+  agent: poet_agent
+
+poetry_editor_agent_task:
+  description: |
+     Refine and enhance the sonnets created by the poet_agent. Above all, it is important that the sonnets follow the right structure, open and read the SonnetRequirements.txt file using the FileReadTool. Use these requirements.
+     Furthermore make sure that they maintain emotional depth while improving flow, rhyme, and overall poetic quality.
+  expected_output: >
+      A collection of 12 sonnets with their titles, and save the text in the "poems.md" markdown file using the FileWriterTool. The poems should adhere to the sonnet structure, with improved flow, rhyme scheme, and emotional depth, while preserving the original intent of the poet_agent.
+  context:
+    [poet_agent_task]
+  output_file: "poems.md"
+  agent: poetry_editor_agent
+
+designing_agent_task:
+  description: >
+     Create 12 LLM prompts to create an appealing and thematically appropriate illustrations and backgrounds for each sonnet. Capture the mood and essence of the seasons as depicted in the poetry.
+  expected_output: >
+     A series of 12 prompts, each corresponding to every sonnet in the output of the poetry_editor_agent_task agent, that visually represents the themes and emotions of the seasons as described in the poetry.
+  context:
+    [poetry_editor_agent_task]
+  agent: designing_agent
+
+critique_agent_task:
+  description: >
+     You receive the 12 LLM prompts created by the designing_agent. Evaluate how well they complement the sonnets. Improve the prompt based on this evaluation to ensure cohesion between the visual images and poems.
+  expected_output: >
+     A refined set of LLM prompts for 12 images that effectively complement the sonnets,, saved in the "prompts.md" markdown file.
+  context:
+    [poetry_editor_agent_task,designing_agent_task]
+  output_file: "prompts.md"
+  agent: critique_agent
+  
+
